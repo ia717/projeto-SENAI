@@ -82,7 +82,7 @@ class QuestionResource extends Resource
                             ->label('Correta')
                             ->default(false)
                             ->reactive()
-                            ->afterStateUpdated(function ($state, callback $set, $get) {
+                            ->afterStateUpdated(function ($state, callable $set, $get) {
 
                             }),
                     ])

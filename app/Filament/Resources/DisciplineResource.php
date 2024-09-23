@@ -30,7 +30,7 @@ class DisciplineResource extends Resource
     protected static ?string $model = Discipline::class;
     protected static ?string $modelLabel = 'disciplina';
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'fas-copy'; // apenas um teste para mostrar que funciona icones do fontawesome
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationGroup = 'Painel de Aulas';
 
