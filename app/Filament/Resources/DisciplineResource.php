@@ -16,13 +16,14 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Validation\Rules\Unique;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use BladeUI\Icons\Components\Icon;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Support\Enums\MaxWidth;
-use Filament\Tables\Columns\IconColumn;
 use Livewire\Attributes\Layout;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 use TomatoPHP\FilamentIcons\Components\IconPicker;
+use TomatoPHP\FilamentIcons\Components\IconColumn;
 
 class DisciplineResource extends Resource
 {
@@ -80,7 +81,7 @@ class DisciplineResource extends Resource
                     ->searchable()
                     ->sortable(),
                 IconColumn::make('icon')
-                    ->label('Ícone'),
+                    ->label('Icon'),
             ])
             ->filters(
                 [
