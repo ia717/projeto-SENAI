@@ -50,7 +50,7 @@ class CategoryResource extends Resource
                     ->label('Nome')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('color')
+                Tables\Columns\ColorColumn::make('color')
                     ->label('Cor')
                     ->searchable()
                     ->sortable(),

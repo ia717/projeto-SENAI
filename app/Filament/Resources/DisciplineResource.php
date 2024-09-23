@@ -18,9 +18,11 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Support\Enums\MaxWidth;
+use Filament\Tables\Columns\IconColumn;
 use Livewire\Attributes\Layout;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
+use TomatoPHP\FilamentIcons\Components\IconPicker;
 
 class DisciplineResource extends Resource
 {
@@ -41,26 +43,13 @@ class DisciplineResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Nome')
                     ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true),
-                // ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set, Forms\get $get, ) {
-
-                //     // Se for uma edição não atualiza o campo slug
-                //     if ($operation === 'edit') {
-                //         return;
-                //     }
-
-                //     $set('slug', Str::slug($state)); // Atualiza o campo slug com o valor do campo name
-
-                // }),
-                // Forms\Components\Hidden::make('slug')
-                //     ->label('Slug')
-                //     ->required(),
-                // ->maxLength(255),
+                    ->maxLength(255),
                 Forms\Components\Select::make('category_id')
                     ->label('Categoria')
-                    ->options(\App\Models\Category::pluck('name', 'id')->toArray())
+                    ->options(Category::pluck('name', 'id')->toArray())
                     ->required(),
+                IconPicker::make('icon')
+                    ->label('Ícone'),
                 // Forms\Components\Textarea::make('description')
                 //     ->label('Descrição')
                 //     ->nullable(),
@@ -86,14 +75,12 @@ class DisciplineResource extends Resource
                     ->label('Nome')
                     ->searchable()
                     ->sortable(),
-                // Tables\Columns\TextColumn::make('slug')
-                //     ->label('Slug')
-                //     ->searchable()
-                //     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Categoria')
                     ->searchable()
                     ->sortable(),
+                IconColumn::make('icon')
+                    ->label('Ícone'),
             ])
             ->filters(
                 [
@@ -136,3 +123,18 @@ class DisciplineResource extends Resource
         ];
     }
 }
+
+
+// Código para atualizar automaticamente o slug com base no nome da disciplina
+//    ->live(onBlur: true),
+// ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set, Forms\get $get, ) {
+//     // Se for uma edição não atualiza o campo slug
+//     if ($operation === 'edit') {
+//         return;
+//     }
+//     $set('slug', Str::slug($state)); // Atualiza o campo slug com o valor do campo name
+// }),
+// Forms\Components\Hidden::make('slug')
+//     ->label('Slug')
+//     ->required(),
+// ->maxLength(255),

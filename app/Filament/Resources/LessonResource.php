@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Filament\Tables\Filters\SelectFilter;
+use App\Models\Topic;
 
 
 class LessonResource extends Resource
@@ -38,7 +39,7 @@ class LessonResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Select::make('topic_id')
                     ->label('Tópico')
-                    ->options(\App\Models\Topic::pluck('name', 'id')->toArray())
+                    ->options(Topic::pluck('name', 'id')->toArray())
                     ->required(),
                 Forms\Components\TextInput::make('link')
                     ->label('Link da aula')
